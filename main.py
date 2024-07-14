@@ -22,8 +22,6 @@ async def create_order(
     try:
         order_validator.validate(order)
         converted_order = order_converter.convert(order)
-        # OrderProcessor.validate_order(order)
-        # converted_order = OrderProcessor.convert_order(order)
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))
 
