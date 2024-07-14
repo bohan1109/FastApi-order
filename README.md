@@ -1,5 +1,30 @@
 # FastApi-order
+## 題目一
+### 問題一：
+```sql
+SELECT bnbs.id AS bnb_id, 
+       bnbs.name AS bnb_name, 
+       SUM(orders.amount) AS may_amount
+FROM orders
+JOIN bnbs ON orders.bnb_id = bnbs.id
+WHERE orders.currency = 'TWD'
+  AND orders.created_at >= '2023-05-01'
+  AND orders.created_at < '2023-06-01'
+GROUP BY bnbs.id, bnbs.name
+ORDER BY may_amount DESC
+LIMIT 10;
+```
+### 問題二：
+建立索引 (Indexing):
 
+確認在 orders 表的 currency、 created_at 欄位上建立索引，以加快查詢條件的過濾速度以及日期的查詢，在 orders 和 bnbs 表的 bnb_id 欄位上建立索引，以加快 JOIN 操作。
+```sql
+CREATE INDEX idx_orders_currency ON orders (currency);
+CREATE INDEX idx_orders_created_at ON orders (created_at);
+CREATE INDEX idx_orders_bnb_id ON orders (bnb_id);
+CREATE INDEX idx_bnbs_id ON bnbs (id);
+```
+## 題目二
 ### 運行方式
 建立、運行容器
 ```bash
