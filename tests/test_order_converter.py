@@ -2,6 +2,7 @@ import pytest
 from model.order import Order
 from services.order_converter_impl import OrderConverterImpl
 
+#測試轉換後的價格是否超過2000
 def test_order_converter_usd_to_twd_exceed_limit():
     converter = OrderConverterImpl()
     order = Order(
@@ -14,6 +15,7 @@ def test_order_converter_usd_to_twd_exceed_limit():
     with pytest.raises(ValueError, match="Converted price is over 2000"):
         converter.convert(order)
 
+#測試轉換後的價格是否正確
 def test_order_converter_usd_to_twd():
     converter = OrderConverterImpl()
     order = Order(
@@ -27,6 +29,7 @@ def test_order_converter_usd_to_twd():
     assert converted_order["order_price"] == 60 * 31
     assert converted_order["order_currency"] == "TWD"
 
+#測試轉換後的價格是否正確
 def test_order_converter_twd():
     converter = OrderConverterImpl()
     order = Order(
