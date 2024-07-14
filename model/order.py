@@ -1,5 +1,5 @@
 from pydantic import BaseModel, Field
-from address import Address
+from model.address import Address
 
 class Order(BaseModel):
     id: str = Field(...)  
