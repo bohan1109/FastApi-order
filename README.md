@@ -25,6 +25,7 @@ CREATE INDEX idx_orders_bnb_id ON orders (bnb_id);
 CREATE INDEX idx_bnbs_id ON bnbs (id);
 ```
 ## 題目二
+使用的是python `FastAPI`框架
 ### 運行方式
 建立、運行容器
 ```bash
@@ -32,6 +33,21 @@ docker-compose build
 docker-compose up
 ```
 Port 為 8080
+完整路徑為`http://127.0.0.1:8080/api/orders`
+輸入資料為
+```json
+{
+    "id": "A0000001",
+    "name": "Melody Holiday Inn",
+    "address": {
+        "city": "taipei-city",
+        "district": "da-an-district",
+        "street": "fuxing-south-road"
+    },
+    "price": "2000",
+    "currency": "TWD"
+}
+```
 
 ## 使用的 SOLID 原則與設計模式
 
