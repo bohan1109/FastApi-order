@@ -27,7 +27,12 @@ CREATE INDEX idx_bnbs_id ON bnbs (id);
 ## 題目二
 使用的是python `FastAPI`框架
 ### 運行方式
-建立、運行容器
+**下載**
+```bash
+git clone https://github.com/bohan1109/FastApi-order.git
+cd FastApi-order
+```
+**建立、運行容器**
 ```bash
 docker-compose build
 docker-compose up
